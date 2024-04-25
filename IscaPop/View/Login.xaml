@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IscaPop.View.Login"
+             Title="Login">
+    <VerticalStackLayout>
+        <Label Text="Login Up" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+        <!--
+            <Entry Text="Correo" HorizontalOptions="Fill" x:Name="email"></Entry>
+            <Entry Text="Password" HorizontalOptions="Fill" x:Name="password"></Entry>
+            <Button Text="Iniciar Sesión" Clicked="IniciarSesión" HorizontalOptions="FillAndExpand"></Button>
+            <Label Text="¿No tienes cuenta?" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <Button Text="Registrarse" Clicked="Registrarse" HorizontalOptions="FillAndExpand"></Button>
+        -->
+        
+        <Entry x:Name="EmailEntry" Placeholder="Introduce tu correo electrónico"/>
+        <Label Text=" "></Label>
+        <Button Text="Obtener código de verificación" Clicked="OnGetVerificationCodeClicked"/>
+        
+    </VerticalStackLayout>
+</ContentPage>

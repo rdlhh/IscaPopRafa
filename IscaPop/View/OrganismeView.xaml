@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IscaPop.View.OrganismeView"
+             Title="OrganismeView">
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Text="Codi: " Grid.Row="0" Grid.Column="0"></Label>
+            <Entry Text="{Binding Organisme.Codi}" Placeholder="Introdueix el Codi"  Grid.Column="1" Grid.Row="0"/>
+            <Label Text="Nom: " Grid.Row="1"  Grid.Column="0"></Label>
+            <Entry Text="{Binding Organisme.Nom}" Placeholder="Introdueix el Nom" Grid.Row="1" Grid.Column="1"></Entry>
+            <Label Text="Email: " Grid.Row="2"  Grid.Column="0"></Label>
+            <Entry Text="{Binding Organisme.Email}" Placeholder="Introdueix el Email" Grid.Row="2" Grid.Column="1"></Entry>
+        </Grid>
+        <Grid>
+            <Label Text=" "></Label>
+        </Grid>
+        <Grid>
+            <Label Text="Llista de Material:"></Label>
+            <ScrollView Grid.Row="2" Grid.ColumnSpan="2">
+                <ListView ItemsSource="{Binding Materials}" HeightRequest="100">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Nom}" Grid.Column="0"/>
+                                    <Label Text="{Binding Stock}" Grid.Column="1"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Grid>
+        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End">
+            <Button Text="Guardar/Modificar" WidthRequest="200" Clicked="BtnGuardar"/>
+            <Button Text="Esborrar" WidthRequest="200" Clicked="BtnEsborrar"/>
+            <Button Text="Nou" WidthRequest="200" Clicked="BtnNou"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
