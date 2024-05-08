@@ -1,20 +1,28 @@
 ﻿using IscaPop.Base;
+using IscaPop.Dao;
 using IscaPop.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IscaPop.ViewModel
 {
     public class BotonsVM : BaseViewModel
     {
-        private Organisme org;
-        public Organisme Org { get { return org; } set { SetProperty(ref org, value); } }
-        internal void AssignaDades(Organisme organisme)
+        private OrganismeDAO organismeDAO;
+
+        private Organisme _organisme;
+        public Organisme Organisme { get { return _organisme; } set { SetProperty(ref _organisme, value); } }
+
+        public BotonsVM()
         {
-            this.Org = organisme;
+            organismeDAO = new OrganismeDAO();
+        }
+
+        internal void assignDades(Organisme org)
+        {
+            this.Organisme = org;
+        }
+        internal void insertarOrganisme()
+        {
+            organismeDAO.insertarOrganisme(Organisme);
         }
     }
 }

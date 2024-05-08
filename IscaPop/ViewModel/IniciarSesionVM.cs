@@ -4,31 +4,24 @@ using IscaPop.Model;
 
 namespace IscaPop.ViewModel
 {
-    public class OrganismeVM : BaseViewModel
+    public class IniciarSesionVM : BaseViewModel
     {
-        private OrganismeDAO orgDAO;
-
+        private OrganismeDAO organismeDAO;
         private Organisme _organisme;
         public Organisme Organisme { get { return _organisme; } set { SetProperty(ref _organisme, value); } }
 
-        public OrganismeVM()
+        public IniciarSesionVM()
         {
-            orgDAO = new OrganismeDAO();
+            organismeDAO = new OrganismeDAO();
         }
-
         internal void assignDades(Organisme org)
         {
             this.Organisme = org;
         }
 
-        public void modificarOrganisme()
+        internal Organisme buscarCuenta(string email, string contraseña)
         {
-            orgDAO.modificarOrganisme(this.Organisme);
-        }
-
-        public void eliminarOrganisme()
-        {
-            orgDAO.eliminarOrganisme(this.Organisme);
+            return organismeDAO.buscarCuenta(email, contraseña);
         }
     }
 }

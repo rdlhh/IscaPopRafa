@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:Base="clr-namespace:IscaPop.Base"
              x:Class="IscaPop.View.BotonsView"
              Title="BotonsView">
-    <VerticalStackLayout>
-        <Button Text="Perfil" WidthRequest="150" Clicked="BtnPerfil"></Button>
-        <Button Text="Publicar Material" WidthRequest="150" Clicked="BtnMaterial"></Button>
-        <Button Text="Buscar" WidthRequest="150" Clicked="BtnBuscar"></Button>
+    <VerticalStackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         Padding="20">
+
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Control" 
+                       FontSize="30"
+                       TextColor="#2196F3"
+                       HorizontalOptions="Center"
+                       Margin="0,20,0,40"/>
+
+                <Button Text="Perfil" 
+                        Clicked="PerfilClick"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        BackgroundColor="#4CAF50"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Margin="0,0,0,20"/>
+
+                <Button Text="Publicar Material" 
+                        Clicked="PublicarMaterialClick"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        BackgroundColor="#FFC107"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Margin="0,0,0,20"/>
+
+                <Button Text="Buscar" 
+                        Clicked="BuscarClick"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        BackgroundColor="#2196F3"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Margin="0,0,0,20"/>
+                <Label Text="{Binding Organisme.nom}"/>
+            </StackLayout>
+        </ScrollView>
     </VerticalStackLayout>
-</ContentPage>
+</Base:BasePage>

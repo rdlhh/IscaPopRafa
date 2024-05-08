@@ -1,51 +1,51 @@
 ﻿using SQLite;
 using SQLiteNetExtensions.Attributes;
+using System.Collections.ObjectModel;
 
 namespace IscaPop.Model
 {
     [Table("Material")]
     public class Material : Base.Base
     {
-        private int id;
+        private int _id;
         [PrimaryKey, AutoIncrement]
-        public int Id { get { return id; } set { id = value; } }
+        public int id { get { return _id; } set { SetProperty(ref _id, value); } }
 
-        private string nom;
-        public string Nom { get { return nom; } set { nom = value; } }
+        private string _nom;
+        public string nom { get { return _nom; } set { SetProperty(ref _nom, value); } }
 
-        private int stock;
-        public int Stock { get {  return stock; } set {  stock = value; } }
+        private string _uso;
+        public string uso { get { return _uso; } set { SetProperty(ref _uso, value); } }
 
-        private string estat;
-        public string Estat { get {  return estat; } set {  estat = value; } }
+        private EnumEstadoMaterial _estat;
+        public EnumEstadoMaterial estat { get { return _estat; } set { SetProperty(ref _estat, value); } }
 
-        private string descripcio;
-        public string Descripcio { get {  return descripcio; } set {  descripcio = value; } }
+        private string _descripcio;
+        public string descripcio { get { return _descripcio; } set { SetProperty(ref _descripcio, value); } }
 
-        private Boolean disponibilitat;
-        public Boolean Disponibilitat {  get { return disponibilitat; } set {  disponibilitat = value; } }
+        private List<Foto> _fotos;
+        [OneToMany(CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
+        public List<Foto> fotos
+        {
+            get { return _fotos; }
+            set
+            {
+                SetProperty(ref _fotos, value);
+                fotosCollection = new ObservableCollection<Foto>(value);
+            }
+        }
 
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Foto> LlistaFotos { get; set; }
+        private ObservableCollection<Foto> _fotosCollection;
+        [Ignore]
+        public ObservableCollection<Foto> fotosCollection
+        {
+            get { return _fotosCollection; }
+            set { SetProperty(ref _fotosCollection, value); }
+        }
 
         [ForeignKey(typeof(Organisme))]
-        public int idOrganisme { get; set; }
-        [ManyToOne]
-        public Organisme Organisme { get; set; }
-
-        public Material() 
-        {
-            LlistaFotos = new List<Foto>();
-        }
-
-        public Material(int id, string nom, int stock, string estat, string descripcio, bool disponibilitat)
-        {
-            Id = id;
-            Nom = nom;
-            Stock = stock;
-            Estat = estat;
-            Descripcio = descripcio;
-            Disponibilitat = disponibilitat;
-        }
+        public int organismeId { get; set; }
+        [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead | CascadeOperation.CascadeDelete)]
+        public Organisme organisme { get; set; }
     }
 }

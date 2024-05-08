@@ -1,54 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Base="clr-namespace:IscaPop.Base"
              x:Class="IscaPop.View.OrganismeView"
              Title="OrganismeView">
-    <VerticalStackLayout>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Label Text="Codi: " Grid.Row="0" Grid.Column="0"></Label>
-            <Entry Text="{Binding Organisme.Codi}" Placeholder="Introdueix el Codi"  Grid.Column="1" Grid.Row="0"/>
-            <Label Text="Nom: " Grid.Row="1"  Grid.Column="0"></Label>
-            <Entry Text="{Binding Organisme.Nom}" Placeholder="Introdueix el Nom" Grid.Row="1" Grid.Column="1"></Entry>
-            <Label Text="Email: " Grid.Row="2"  Grid.Column="0"></Label>
-            <Entry Text="{Binding Organisme.Email}" Placeholder="Introdueix el Email" Grid.Row="2" Grid.Column="1"></Entry>
-        </Grid>
-        <Grid>
-            <Label Text=" "></Label>
-        </Grid>
-        <Grid>
-            <Label Text="Llista de Material:"></Label>
-            <ScrollView Grid.Row="2" Grid.ColumnSpan="2">
-                <ListView ItemsSource="{Binding Materials}" HeightRequest="100">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding Nom}" Grid.Column="0"/>
-                                    <Label Text="{Binding Stock}" Grid.Column="1"/>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollView>
-        </Grid>
-        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End">
-            <Button Text="Guardar/Modificar" WidthRequest="200" Clicked="BtnGuardar"/>
-            <Button Text="Esborrar" WidthRequest="200" Clicked="BtnEsborrar"/>
-            <Button Text="Nou" WidthRequest="200" Clicked="BtnNou"/>
+    <VerticalStackLayout Margin="20" Spacing="10">
+        <Label Text="Nom" FontSize="18" TextColor="#333333" />
+        <Entry x:Name="txtNomPerfil" Text="{Binding Organisme.nom}" Placeholder="Introduce el nom" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" />
+        <Label Text="Email" FontSize="18" TextColor="#333333" />
+        <Entry x:Name="txtEmailPerfil" Text="{Binding Organisme.email}" Placeholder="Introduce el email" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" />
+        <Label Text="Contraseña" FontSize="18" TextColor="#333333" />
+        <Entry x:Name="txtPasswordPerfil" Text="{Binding Organisme.password}" Placeholder="Introduce la contraseña" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" />
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="Modificar" FontSize="18" BackgroundColor="#007BFF" TextColor="#FFFFFF" HeightRequest="50" Clicked="ModificarPerfil"/>
+            <Button Text="Eliminar" FontSize="18" BackgroundColor="#DC3545" TextColor="#FFFFFF" HeightRequest="50" Clicked="EliminarPerfil"/>
+            <Button Text="Cancelar" FontSize="18" BackgroundColor="#6C757D" TextColor="#FFFFFF" HeightRequest="50" Clicked="CancelarCambios"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
-</ContentPage>
+</Base:BasePage>

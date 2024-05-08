@@ -1,69 +1,223 @@
 using System.Net.Mail;
 using System.Net;
 using System.Text;
+using IscaPop.Base;
+using IscaPop.Model;
+using IscaPop.ViewModel;
 
 namespace IscaPop.View;
 
-public partial class Login : ContentPage
+public partial class Login : BasePage
 {
-	public Login()
-	{
-		InitializeComponent();
-	}
+    public string codi;
+    private LoginVM vm;
 
-    private void OnGetVerificationCodeClicked(object sender, EventArgs e)
+    public Login()
     {
-        // Generar código de verificación aleatorio
-        string verificationCode = GenerateVerificationCode();
-
-        // Correo electrónico del destinatario
-        string email = EmailEntry.Text;
-
-        // Enviar correo electrónico con el código de verificación
-        SendVerificationEmail(email, verificationCode);
-
-        DisplayAlert("Código de verificación enviado", "Se ha enviado un código de verificación a tu dirección de correo electrónico.", "OK");
+        InitializeComponent();
+        BindingContext = vm = new LoginVM();
     }
 
-    private string GenerateVerificationCode()
+    private void EnviarCodigoClick(object sender, EventArgs e)
     {
-        // Generar un código de 6 dígitos
-        Random random = new Random();
-        int code = random.Next(100000, 999999);
-        return code.ToString();
-    }
+        string email = txtEmail.Text;
+        generarCodigo();
+        MailAddress addresFrom = new MailAddress("pruebasProyectos123456@gmail.com", "_PrUeBaS_pRoYeCtOs_123456_");
+        MailAddress addresTo = new MailAddress(email);
+        MailMessage message = new MailMessage(addresFrom, addresTo);
 
-    private void SendVerificationEmail(string toEmail, string verificationCode)
-    {
-        // Configurar cliente SMTP
-        var smtpClient = new SmtpClient("smtp.gmail.com")
-        {
-            Port = 587,
-            Credentials = new NetworkCredential("rdlhh87@gmail.com", "qhem sdbu agxa zgda"),
-            EnableSsl = true,
-        };
+        message.Subject = "Código de verificación";
+        message.IsBodyHtml = true;
+        message.Body = "Tu código de verificación es: " + codi;
 
-        // Crear mensaje de correo electrónico
-        var message = new MailMessage
-        {
-            From = new MailAddress("pruebasproyectos123456@gmail.com"),
-            Subject = "Código de verificación",
-            Body = $"Tu código de verificación es: {verificationCode}",
-            BodyEncoding = Encoding.UTF8,
-            IsBodyHtml = true,
-        };
+        SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+        smtpClient.Port = 587;
+        smtpClient.EnableSsl = true;
+        smtpClient.UseDefaultCredentials = false;
+        smtpClient.Credentials = new NetworkCredential("pruebasProyectos123456@gmail.com", "obrc elas rflm gler");
 
-        // Añadir destinatario
-        message.To.Add(toEmail);
 
+        /*
+    // Configurar el cliente SMTP para enviar el correo electrónico
+    SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+    smtpClient.Port = 587;
+    smtpClient.Credentials = new NetworkCredential("pruebasProyectos123456@gmail.com", "_PrUeBaS_pRoYeCtOs_123456_");
+    smtpClient.EnableSsl = true;
+
+    // Configurar el mensaje de correo electrónico
+    MailMessage mailMessage = new MailMessage();
+    mailMessage.From = new MailAddress("pruebasProyectos123456@gmail.com");
+    mailMessage.To.Add(email);
+    mailMessage.Subject = "Código de verificación";
+    mailMessage.Body = "Tu código de verificación es: " + codi;
+        */
+        // Enviar el correo electrónico
         try
         {
-            // Enviar correo electrónico
             smtpClient.Send(message);
+            DisplayAlert("Código de verificación enviado", "Se ha enviado un código de verificación a tu dirección de correo electrónico.", "OK");
         }
         catch (Exception ex)
         {
-            ex.ToString();
+            DisplayAlert("Error al enviar el correo electrónico", "Ha ocurrdo un error al enviar el correo electrónico", "OK");
         }
     }
+
+    private async void EntrarClick(object sender, EventArgs e)
+    {
+        string correo = txtEmail.Text;
+        //(bool esValido, int cod) = EsCorreoElectronicoValido(correo);
+        //if (esValido)
+        //{
+        string cod = codi;
+        string nom = "nombrePrueba";
+        Organisme org = new Organisme();
+        org.nom = nom;
+        org.codi = cod;
+        org.email = correo;
+        if (txtCodi.Text == codi)
+        {
+            await Shell.Current.GoToAsync($"{nameof(ContrasenyaView)}",
+             new Dictionary<string, object>
+             {
+
+                     { "Organisme", org }
+             }
+            );
+        }
+        else
+        {
+            DisplayAlert("Código de verificación erroneo", "El codigo de verificación introducido no es correcto", "OK");
+        }
+        //}
+        //else
+        //{
+        //    DisplayAlert("Correo no valido", "El correo introducido no es valido.", "OK");
+        //}
+
+
+    }
+
+    private void generarCodigo()
+    {
+        string codigo = "";
+        int num = 0;
+        Random random = new Random();
+        for (int i = 0; i < 4; i++)
+        {
+            num = random.Next(10);
+            int numLetra = random.Next(26);
+            string letra = "";
+            switch (numLetra)
+            {
+                case 0:
+                    letra = "A";
+                    break;
+                case 1:
+                    letra = "B";
+                    break;
+                case 2:
+                    letra = "C";
+                    break;
+                case 3:
+                    letra = "D";
+                    break;
+                case 4:
+                    letra = "E";
+                    break;
+                case 5:
+                    letra = "F";
+                    break;
+                case 6:
+                    letra = "G";
+                    break;
+                case 7:
+                    letra = "H";
+                    break;
+                case 8:
+                    letra = "I";
+                    break;
+                case 9:
+                    letra = "J";
+                    break;
+                case 10:
+                    letra = "K";
+                    break;
+                case 11:
+                    letra = "L";
+                    break;
+                case 12:
+                    letra = "M";
+                    break;
+                case 13:
+                    letra = "N";
+                    break;
+                case 14:
+                    letra = "O";
+                    break;
+                case 15:
+                    letra = "P";
+                    break;
+                case 16:
+                    letra = "Q";
+                    break;
+                case 17:
+                    letra = "R";
+                    break;
+                case 18:
+                    letra = "S";
+                    break;
+                case 19:
+                    letra = "T";
+                    break;
+                case 20:
+                    letra = "U";
+                    break;
+                case 21:
+                    letra = "V";
+                    break;
+                case 22:
+                    letra = "W";
+                    break;
+                case 23:
+                    letra = "X";
+                    break;
+                case 24:
+                    letra = "Y";
+                    break;
+                case 25:
+                    letra = "Z";
+                    break;
+            }
+            int minOMay = random.Next(2);
+            switch (minOMay)
+            {
+                case 0:
+                    letra = letra.ToLower(); break;
+                case 1:
+                    letra = letra.ToUpper(); break;
+            }
+            codigo += letra;
+            codigo += num.ToString();
+        }
+        codi = codigo;
+    }
+    private static (bool, int) EsCorreoElectronicoValido(string correo)
+    {
+        // Dividir la cadena en dos partes en función del carácter '@'
+        string[] partes = correo.Split('@');
+        int cod = Convert.ToInt32(partes[0]);
+
+        if (partes.Length == 2 && partes[0].Length > 0)
+        {
+            string[] partesDespuesArroba = partes[1].Split('.');
+            if (partesDespuesArroba.Length == 3 && partesDespuesArroba[0] == "edu" && partesDespuesArroba[1] == "gva" && partesDespuesArroba[2] == "es")
+
+            {
+                return (true, cod); // La cadena comienza con un formato de correo electrónico válido
+            }
+        }
+
+        return (false, 0); // La cadena no comienza con un formato de correo electrónico válido
+    }
 }
