@@ -22,7 +22,7 @@ public partial class Login : BasePage
     {
         string email = txtEmail.Text;
         generarCodigo();
-        MailAddress addresFrom = new MailAddress("pruebasProyectos123456@gmail.com", "_PrUeBaS_pRoYeCtOs_123456_");
+        MailAddress addresFrom = new MailAddress("rdlhh87gmail.com", "Codi Verificació");
         MailAddress addresTo = new MailAddress(email);
         MailMessage message = new MailMessage(addresFrom, addresTo);
 
@@ -34,7 +34,7 @@ public partial class Login : BasePage
         smtpClient.Port = 587;
         smtpClient.EnableSsl = true;
         smtpClient.UseDefaultCredentials = false;
-        smtpClient.Credentials = new NetworkCredential("pruebasProyectos123456@gmail.com", "obrc elas rflm gler");
+        smtpClient.Credentials = new NetworkCredential("rdlhh87@gmail.com", "qhem sdbu agxa zgda");
 
 
         /*
