@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Base="clr-namespace:IscaPop.Base"  
              x:Class="IscaPop.View.Opciones"
-             Title="Opciones">
+             Title="IscaPop">
     <VerticalStackLayout VerticalOptions="FillAndExpand"
                      HorizontalOptions="FillAndExpand"
                      Padding="20">
