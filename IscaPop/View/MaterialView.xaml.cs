@@ -59,4 +59,21 @@ public partial class MaterialView : BasePage
         Organisme.materialsCollection.Add(mat);
         vm.assignDadesOrganisme(Organisme);
     }
+
+    private void ModClick(object sender, EventArgs e)
+    {
+        string nom = txtNom.Text;
+        string uso = txtUso.Text;
+        string descripcio = txtDescripcio.Text;
+        Material.nom = nom;
+        Material.uso = uso;
+        Material.descripcio = descripcio;
+        vm.modMaterial();
+
+    }
+
+    private void BorrarClick(object sender, EventArgs e)
+    {
+        vm.borrarMaterial();
+    }
 }

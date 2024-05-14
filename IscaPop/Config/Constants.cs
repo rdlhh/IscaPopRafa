@@ -12,7 +12,16 @@
             // enable multi-threaded database access
             SQLite.SQLiteOpenFlags.SharedCache;
 
-        public static string DatabasePath =>
-            Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
+        public static string DatabasePath2 =>  Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
+        public static string DatabasePath
+        {
+            get
+            {
+                var x = Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
+                int v = 6;
+                return x;
+            }
+        }
     }
+
 }

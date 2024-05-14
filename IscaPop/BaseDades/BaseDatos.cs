@@ -22,7 +22,13 @@ namespace IscaPop.BaseDades
             }
             else
             {
-                connection = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+                try
+                {
+                    connection = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+                }catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 return connection;
             }
         }

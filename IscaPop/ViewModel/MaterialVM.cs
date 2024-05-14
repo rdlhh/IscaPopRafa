@@ -32,5 +32,15 @@ namespace IscaPop.ViewModel
         {
             materialDAO.insertarMaterial(material);
         }
+
+        internal void borrarMaterial()
+        {
+            materialDAO.deleteMaterial(this.Material);
+        }
+
+        internal void modMaterial()
+        {
+            materialDAO.modificarMaterial(this.Material);
+        }
     }
 }
