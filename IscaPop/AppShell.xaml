@@ -9,6 +9,6 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate view:MaterialView}"/>
+        ContentTemplate="{DataTemplate view:Opciones}"/>
 
 </Shell>

@@ -35,7 +35,7 @@ public partial class BotonsView : BasePage
 
     private async void PublicarMaterialClick(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync($"{nameof(MaterialView)}",
+        await Shell.Current.GoToAsync($"{nameof(LlistaMaterialView)}",
              new Dictionary<string, object>
              {
                  { "OrganismeSelected", Organisme }

@@ -1,6 +1,5 @@
 using System.Net.Mail;
 using System.Net;
-using System.Text;
 using IscaPop.Base;
 using IscaPop.Model;
 using IscaPop.ViewModel;
@@ -22,13 +21,13 @@ public partial class Login : BasePage
     {
         string email = txtEmail.Text;
         generarCodigo();
-        MailAddress addresFrom = new MailAddress("rdlhh87gmail.com", "Codi Verificació");
+        MailAddress addresFrom = new MailAddress("rdlhh87gmail.com", "Codi_Verificació");
         MailAddress addresTo = new MailAddress(email);
         MailMessage message = new MailMessage(addresFrom, addresTo);
 
-        message.Subject = "Código de verificación";
+        message.Subject = "Codi de verificació";
         message.IsBodyHtml = true;
-        message.Body = "Tu código de verificación es: " + codi;
+        message.Body = "El teu codi de verificació és: " + codi;
 
         SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
         smtpClient.Port = 587;

@@ -1,6 +1,7 @@
 ﻿using IscaPop.Config;
 using IscaPop.Model;
 using SQLite;
+using SQLiteNetExtensionsAsync.Extensions;
 
 namespace IscaPop.BaseDades
 {
@@ -44,6 +45,13 @@ namespace IscaPop.BaseDades
             GetConnection().CreateTableAsync<Organisme>().Wait();
             GetConnection().CreateTableAsync<Solicitud>().Wait();
 
+        }
+
+        public async static void InsertaDades()
+        {
+            Organisme organisme1 = new Organisme { nom = "Organisme1", email = "1", password = "1"};
+            await GetConnection().InsertAsync(organisme1);
+            await GetConnection().UpdateWithChildrenAsync(organisme1);
         }
     }
 }

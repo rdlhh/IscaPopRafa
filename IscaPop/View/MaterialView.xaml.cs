@@ -4,7 +4,7 @@ using IscaPop.ViewModel;
 
 namespace IscaPop.View;
 
-[QueryProperty(nameof(Organisme), "OrganismeSelected")]
+[QueryProperty(nameof(Organisme), "MaterialSelected")]
 public partial class MaterialView : BasePage
 {
     private MaterialVM vm;

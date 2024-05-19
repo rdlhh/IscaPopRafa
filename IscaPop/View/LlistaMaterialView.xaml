@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Base="clr-namespace:IscaPop.Base"
+             x:Class="IscaPop.View.LlistaMaterialView"
+             Title="Llista Material">
+    <VerticalStackLayout>
+        <Grid>
+            <ScrollView Grid.Row="2" Grid.ColumnSpan="2">
+                <ListView ItemsSource="{Binding Materials}" ItemTapped="MaterialTapped" HeightRequest="30">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding fotos}" HeightRequest="75" WidthRequest="75" Aspect="AspectFill" Grid.Column="0" Grid.Row="0"/>
+                                    <Label Text="{Binding Nom}" Grid.Column="0" HorizontalOptions="Start"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Grid>
+        <Grid>
+            <Button Text="Afegir Nou Material" Clicked="NouClick" HorizontalOptions="End"></Button>
+        </Grid>
+        
+    </VerticalStackLayout>
+</Base:BasePage>

@@ -64,6 +64,10 @@
         </HorizontalStackLayout>
 
         <Grid>
+            <Label Text="FOTOS:" HorizontalOptions="Start"/>
+        </Grid>
+        
+        <Grid>
             <ScrollView Grid.Row="2" Grid.ColumnSpan="2">
                 <ListView ItemsSource="{Binding Material.fotos}" HeightRequest="100">
                     <ListView.ItemTemplate>
