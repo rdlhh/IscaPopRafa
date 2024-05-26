@@ -13,6 +13,7 @@ namespace IscaPop.BaseDades
         static BaseDatos()
         {
             CreaTablasAsync();
+            InsertaDades();
         }
 
         public static SQLiteAsyncConnection GetConnection()
@@ -51,7 +52,7 @@ namespace IscaPop.BaseDades
         {
             Organisme organisme1 = new Organisme { nom = "Organisme1", email = "1", password = "1"};
             await GetConnection().InsertAsync(organisme1);
-            await GetConnection().UpdateWithChildrenAsync(organisme1);
+
         }
     }
 }

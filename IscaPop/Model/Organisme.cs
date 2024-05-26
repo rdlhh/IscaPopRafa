@@ -49,5 +49,11 @@ namespace IscaPop.Model
             get { return _materialsCollection; }
             set { SetProperty(ref _materialsCollection, value); }
         }
+
+        public Organisme()
+        {
+            materials = new List<Material>();
+            materialsCollection = new ObservableCollection<Material>();
+        }
     }
 }

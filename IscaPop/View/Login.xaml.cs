@@ -15,50 +15,51 @@ public partial class Login : BasePage
     {
         InitializeComponent();
         BindingContext = vm = new LoginVM();
+        txtEmail.Text = "rdlhh87@gmail.com";
     }
 
-    private void EnviarCodigoClick(object sender, EventArgs e)
+    private async void EnviarCodigoClickAsync(object sender, EventArgs e)
     {
         string email = txtEmail.Text;
         generarCodigo();
-        MailAddress addresFrom = new MailAddress("rdlhh87gmail.com", "Codi_Verificació");
-        MailAddress addresTo = new MailAddress(email);
-        MailMessage message = new MailMessage(addresFrom, addresTo);
-
-        message.Subject = "Codi de verificació";
-        message.IsBodyHtml = true;
-        message.Body = "El teu codi de verificació és: " + codi;
-
-        SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-        smtpClient.Port = 587;
-        smtpClient.EnableSsl = true;
-        smtpClient.UseDefaultCredentials = false;
-        smtpClient.Credentials = new NetworkCredential("rdlhh87@gmail.com", "qhem sdbu agxa zgda");
-
-
-        /*
-    // Configurar el cliente SMTP para enviar el correo electrónico
-    SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-    smtpClient.Port = 587;
-    smtpClient.Credentials = new NetworkCredential("pruebasProyectos123456@gmail.com", "_PrUeBaS_pRoYeCtOs_123456_");
-    smtpClient.EnableSsl = true;
-
-    // Configurar el mensaje de correo electrónico
-    MailMessage mailMessage = new MailMessage();
-    mailMessage.From = new MailAddress("pruebasProyectos123456@gmail.com");
-    mailMessage.To.Add(email);
-    mailMessage.Subject = "Código de verificación";
-    mailMessage.Body = "Tu código de verificación es: " + codi;
-        */
-        // Enviar el correo electrónico
         try
         {
+            MailAddress addresFrom = new MailAddress("rdlhh87@gmail.com", "Codi_Verificació");
+            MailAddress addresTo = new MailAddress(email);
+            MailMessage message = new MailMessage(addresFrom, addresTo);
+
+            message.Subject = "Codi de verificació";
+            message.IsBodyHtml = true;
+            message.Body = "El teu codi de verificació és: " + codi;
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.EnableSsl = true;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.Credentials = new NetworkCredential("rdlhh87@gmail.com", "qhem sdbu agxa zgda");
+
+
+            /*
+        // Configurar el cliente SMTP para enviar el correo electrónico
+        SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+        smtpClient.Port = 587;
+        smtpClient.Credentials = new NetworkCredential("pruebasProyectos123456@gmail.com", "_PrUeBaS_pRoYeCtOs_123456_");
+        smtpClient.EnableSsl = true;
+
+        // Configurar el mensaje de correo electrónico
+        MailMessage mailMessage = new MailMessage();
+        mailMessage.From = new MailAddress("pruebasProyectos123456@gmail.com");
+        mailMessage.To.Add(email);
+        mailMessage.Subject = "Código de verificación";
+        mailMessage.Body = "Tu código de verificación es: " + codi;
+            */
+            // Enviar el correo electrónico
             smtpClient.Send(message);
-            DisplayAlert("Código de verificación enviado", "Se ha enviado un código de verificación a tu dirección de correo electrónico.", "OK");
+            await DisplayAlert("Código de verificación enviado", "Se ha enviado un código de verificación a tu dirección de correo electrónico.", "OK");
         }
         catch (Exception ex)
         {
-            DisplayAlert("Error al enviar el correo electrónico", "Ha ocurrdo un error al enviar el correo electrónico", "OK");
+            await DisplayAlert("Error al enviar el correo electrónico", "Ha ocurrdo un error al enviar el correo electrónico"+ex.Message, "OK");
         }
     }
 

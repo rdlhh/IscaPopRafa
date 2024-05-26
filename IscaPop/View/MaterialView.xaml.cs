@@ -4,7 +4,8 @@ using IscaPop.ViewModel;
 
 namespace IscaPop.View;
 
-[QueryProperty(nameof(Organisme), "MaterialSelected")]
+[QueryProperty(nameof(Organisme), "OrganismeSelected")]
+[QueryProperty(nameof(Material), "MaterialSelected")]
 public partial class MaterialView : BasePage
 {
     private MaterialVM vm;
@@ -30,6 +31,7 @@ public partial class MaterialView : BasePage
         InitializeComponent();
         BindingContext = vm = new MaterialVM();
         vm.assignDadesOrganisme(Organisme);
+        Material = vm.Material;
     }
 
     private async void HacerFotoClick(object sender, EventArgs e)
@@ -65,9 +67,13 @@ public partial class MaterialView : BasePage
         string nom = txtNom.Text;
         string uso = txtUso.Text;
         string descripcio = txtDescripcio.Text;
+        int stock = Convert.ToInt32(txtStock.Text);
+        EnumEstadoMaterial estat = (EnumEstadoMaterial)Enum.Parse(typeof(EnumEstadoMaterial), (string)pickerEstat.SelectedItem);
         Material.nom = nom;
         Material.uso = uso;
         Material.descripcio = descripcio;
+        Material.stock = stock;
+        Material.estat = estat;
         vm.modMaterial();
 
     }

@@ -18,7 +18,6 @@ public partial class HacerFotoView : BasePage
     }
 
     private Foto _foto;
-
     public Foto Foto
     {
         get { return _foto; }

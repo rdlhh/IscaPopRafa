@@ -17,6 +17,10 @@ namespace IscaPop.ViewModel
         public MaterialVM()
         {
             materialDAO = new MaterialDAO();
+            if(Material == null)
+            {
+                Material = new Material();
+            }
         }
         internal void assignDadesOrganisme(Organisme org)
         {

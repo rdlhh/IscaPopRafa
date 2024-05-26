@@ -5,12 +5,12 @@
                x:Class="IscaPop.View.MaterialView"
                Title="MATERIAL">
     <VerticalStackLayout>
-        <Label Text="Nom" FontSize="18" TextColor="#333333" />
-        <Entry x:Name="txtNom" Placeholder="Introduce el nom" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" />
-        <Label Text="Uso" FontSize="18" TextColor="#333333" />
-        <Entry x:Name="txtUso" Placeholder="Introduce el uso" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" />
+        <Label Text="Nom" FontSize="18" TextColor="#FFFFFF" />
+        <Entry x:Name="txtNom" Placeholder="Introdueix el nom" FontSize="16" BackgroundColor="#000000" HeightRequest="40" />
+        <Label Text="Us" FontSize="18" TextColor="#FFFFFF" />
+        <Entry x:Name="txtUso" Placeholder="Introdueix l'us" FontSize="16" BackgroundColor="#000000" HeightRequest="40" />
 
-        <Picker x:Name="pickerEstat" Title="Selecciona l'estat" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40">
+        <Picker x:Name="pickerEstat" Title="Selecciona l'estat" FontSize="16" BackgroundColor="#000000" HeightRequest="40">
             <Picker.Items>
                 <x:String>Bueno</x:String>
                 <x:String>PocoGastado</x:String>
@@ -21,11 +21,14 @@
             </Picker.Items>
         </Picker>
 
-        <Label Text="Descripcio" FontSize="18" TextColor="#333333" />
-        <Entry x:Name="txtDescripcio" Placeholder="Introduce la descripció" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" />
+        <Label Text="Descripció" FontSize="18" TextColor="#FFFFFF" />
+        <Entry x:Name="txtDescripcio" Placeholder="Introdueix la descripció" FontSize="16" BackgroundColor="#000000" HeightRequest="40" />
+        <Label Text="Stock" FontSize="18" TextColor="#333333" />
+        <Entry x:Name="txtStock" Placeholder="Introduce el stock" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" Text="{Binding Material.stock}"/>
+        
 
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-            <Button Text="Hacer foto" 
+            <Button Text="FOTO" 
             Clicked="HacerFotoClick"
             FontSize="20"
             FontAttributes="Bold"
@@ -34,7 +37,7 @@
             CornerRadius="10"
             Margin="0,20,20,0"/>
 
-            <Button Text="Añadir" 
+            <Button Text="Afegir" 
             Clicked="AñadirClick"
             FontSize="20"
             FontAttributes="Bold"

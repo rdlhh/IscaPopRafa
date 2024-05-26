@@ -5,16 +5,16 @@
              x:Class="IscaPop.View.OrganismeView"
              Title="PERFIL ORGANISME">
     <VerticalStackLayout Margin="20" Spacing="10">
-        <Label Text="Nom" FontSize="18" TextColor="#333333" />
-        <Entry x:Name="txtNomPerfil" Text="{Binding Organisme.nom}" Placeholder="Introduce el nom" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" />
-        <Label Text="Email" FontSize="18" TextColor="#333333" />
-        <Entry x:Name="txtEmailPerfil" Text="{Binding Organisme.email}" Placeholder="Introduce el email" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" />
-        <Label Text="Contraseña" FontSize="18" TextColor="#333333" />
-        <Entry x:Name="txtPasswordPerfil" Text="{Binding Organisme.password}" Placeholder="Introduce la contraseña" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" />
+        <Label Text="Nom" FontSize="18" TextColor="#FFFFFF" />
+        <Entry x:Name="txtNomPerfil" Text="{Binding Organisme.nom}" Placeholder="Introduce el nom" FontSize="16" BackgroundColor="#000000" HeightRequest="40" />
+        <Label Text="Email" FontSize="18" TextColor="#FFFFFF" />
+        <Entry x:Name="txtEmailPerfil" Text="{Binding Organisme.email}" Placeholder="Introduce el email" FontSize="16" BackgroundColor="#000000" HeightRequest="40" />
+        <Label Text="Contraseña" FontSize="18" TextColor="#FFFFFF" />
+        <Entry x:Name="txtPasswordPerfil" Text="{Binding Organisme.password}" Placeholder="Introduce la contraseña" FontSize="16" BackgroundColor="#000000" HeightRequest="40" />
         <HorizontalStackLayout Spacing="10">
-            <Button Text="Modificar" FontSize="18" BackgroundColor="#007BFF" TextColor="#FFFFFF" HeightRequest="50" Clicked="ModificarPerfil"/>
-            <Button Text="Eliminar" FontSize="18" BackgroundColor="#DC3545" TextColor="#FFFFFF" HeightRequest="50" Clicked="EliminarPerfil"/>
-            <Button Text="Cancelar" FontSize="18" BackgroundColor="#6C757D" TextColor="#FFFFFF" HeightRequest="50" Clicked="CancelarCambios"/>
+            <Button Text="Modificar" FontSize="18" BackgroundColor="#007BFF" TextColor="#000000" HeightRequest="50" Clicked="ModificarPerfil"/>
+            <Button Text="Eliminar" FontSize="18" BackgroundColor="#DC3545" TextColor="#000000" HeightRequest="50" Clicked="EliminarPerfil"/>
+            <Button Text="Cancelar" FontSize="18" BackgroundColor="#6C757D" TextColor="#000000" HeightRequest="50" Clicked="CancelarCambios"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </Base:BasePage>

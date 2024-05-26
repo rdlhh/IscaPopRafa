@@ -17,14 +17,15 @@ public partial class LlistaMaterialView : BasePage
     public Material Material
     {
         get { return material; }
-        set { SetProperty(ref material, value); }
+        set { SetProperty(ref material, value); vm.AssignaDadesM(Material); }
     }
 
     private LlistaMaterialVM vm;
-	public LlistaMaterialView(Organisme organisme)
+	public LlistaMaterialView()
 	{
 		InitializeComponent();
 		BindingContext = vm = new LlistaMaterialVM(organisme);
+        vm.AssignaDadesM(Material);
 		Loaded += OnLoad;
 	}
 
@@ -46,6 +47,7 @@ public partial class LlistaMaterialView : BasePage
         await Shell.Current.GoToAsync($"{nameof(MaterialView)}",
              new Dictionary<string, object>
              {
+                 { "OrganismeSelected", Organisme },
                  { "MaterialSelected", mat }
              }
         );
@@ -53,11 +55,11 @@ public partial class LlistaMaterialView : BasePage
 
     private async void NouClick(object sender, EventArgs e)
     {
-		Material material = new Material();
         await Shell.Current.GoToAsync($"{nameof(MaterialView)}",
              new Dictionary<string, object>
              {
-                 { "MaterialSelected", material }
+                 { "OrganismeSelected", Organisme },
+                 { "MaterialSelected", null }
              }
         );
     }

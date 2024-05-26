@@ -6,18 +6,13 @@
              Title="Llista Material">
     <VerticalStackLayout>
         <Grid>
-            <ScrollView Grid.Row="2" Grid.ColumnSpan="2">
+            <ScrollView>
                 <ListView ItemsSource="{Binding Materials}" ItemTapped="MaterialTapped" HeightRequest="30">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Source="{Binding fotos}" HeightRequest="75" WidthRequest="75" Aspect="AspectFill" Grid.Column="0" Grid.Row="0"/>
-                                    <Label Text="{Binding Nom}" Grid.Column="0" HorizontalOptions="Start"/>
+                                    <Label Text="{Binding nom}"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
@@ -28,6 +23,5 @@
         <Grid>
             <Button Text="Afegir Nou Material" Clicked="NouClick" HorizontalOptions="End"></Button>
         </Grid>
-        
     </VerticalStackLayout>
 </Base:BasePage>

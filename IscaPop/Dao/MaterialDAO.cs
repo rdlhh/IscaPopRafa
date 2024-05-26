@@ -8,9 +8,19 @@ namespace IscaPop.Dao
     {
         public MaterialDAO() { }
 
-        public static Task<List<Material>> getMaterialAsync() 
+        public static List<Material> getMaterialOrgAsync(Organisme org) 
         { 
-            return BaseDatos.GetConnection().Table<Material>().ToListAsync();
+            List<Material> materials = new List<Material>();
+            List<Material> materialsOrganisme = new List<Material>();
+            materials = BaseDatos.GetConnection().GetAllWithChildrenAsync<Material>().Result;
+            foreach (Material material in materials)
+            {
+                if(material.organisme.id == org.id)
+                {
+                    materialsOrganisme.Add(material);
+                }
+            }
+            return materialsOrganisme;
         }
         public void insertarMaterial(Material material)
         {

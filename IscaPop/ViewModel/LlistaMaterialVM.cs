@@ -14,6 +14,13 @@ namespace IscaPop.ViewModel
             set { SetProperty(ref organisme, value); }
         }
 
+        private Material material;
+        public Material Material
+        {
+            get { return material; }
+            set { SetProperty(ref material, value);}
+        }
+
         private ObservableCollection<Material> materials;
         public ObservableCollection<Material> Materials
         {
@@ -24,8 +31,7 @@ namespace IscaPop.ViewModel
         public LlistaMaterialVM(Organisme organisme)
         {
             Organisme = organisme;
-            Task<List<Material>> l = MaterialDAO.getMaterialAsync();
-            materials = new ObservableCollection<Material>(l.Result);
+            materials = new ObservableCollection<Material>(MaterialDAO.getMaterialOrgAsync(Organisme));
         }
         public void AssignaDades()
         {
@@ -36,6 +42,11 @@ namespace IscaPop.ViewModel
         {
             Organisme = organisme;
 
+        }
+
+        internal void AssignaDadesM(Material material)
+        {
+            Material = material;
         }
     }
 }

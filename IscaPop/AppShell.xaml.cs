@@ -13,6 +13,7 @@
             Routing.RegisterRoute(nameof(View.OrganismeView), typeof(View.OrganismeView));
             Routing.RegisterRoute(nameof(View.MaterialView), typeof(View.MaterialView));
             Routing.RegisterRoute(nameof(View.HacerFotoView), typeof(View.HacerFotoView));
+            Routing.RegisterRoute(nameof(View.LlistaMaterialView), typeof(View.LlistaMaterialView));
         }
     }
 }
