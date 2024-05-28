@@ -43,7 +43,13 @@ public partial class BotonsView : BasePage
         );
     }
 
-    private void BuscarClick(object sender, EventArgs e)
+    private async void BuscarClick(object sender, EventArgs e)
     {
+        await Shell.Current.GoToAsync($"{nameof(BuscarMaterialView)}",
+             new Dictionary<string, object>
+             {
+                 { "OrganismeSelected", Organisme }
+             }
+            );
     }
 }

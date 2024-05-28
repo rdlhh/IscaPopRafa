@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Base="clr-namespace:IscaPop.Base"
+             x:Class="IscaPop.View.MaterialBuscat"
+             Title="MaterialBuscat">
+    <VerticalStackLayout>
+        <ListView ItemsSource="{Binding ListaMateriales}" HasUnevenRows="True" ItemTapped="MaterialSeleccionado">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding nom}" FontSize="16" TextColor="#000000"/>
+                            <Label Text="{Binding descripcio}" FontSize="14" TextColor="#666666"/>
+                            <Label Text="{Binding uso}" FontSize="14" TextColor="#666666"/>
+                            <Label Text="{Binding estat}" FontSize="14" TextColor="#666666"/>
+                            <Label Text="{Binding stock}" FontSize="14" TextColor="#666666"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</Base:BasePage>

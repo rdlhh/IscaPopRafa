@@ -14,6 +14,10 @@
             Routing.RegisterRoute(nameof(View.MaterialView), typeof(View.MaterialView));
             Routing.RegisterRoute(nameof(View.HacerFotoView), typeof(View.HacerFotoView));
             Routing.RegisterRoute(nameof(View.LlistaMaterialView), typeof(View.LlistaMaterialView));
+            Routing.RegisterRoute(nameof(View.BuscarMaterialView), typeof(View.BuscarMaterialView));
+            Routing.RegisterRoute(nameof(View.SolicitarMaterial), typeof(View.SolicitarMaterial));
+            Routing.RegisterRoute(nameof(View.MaterialBuscat), typeof(View.MaterialBuscat));
+
         }
     }
 }
