@@ -53,6 +53,13 @@ namespace IscaPop.BaseDades
             Organisme organisme1 = new Organisme { nom = "Organisme1", email = "1", password = "1"};
             await GetConnection().InsertAsync(organisme1);
 
+            Material mat1 = new Material { nom = "Material1", descripcio = "MaterialMaterial"};
+            await GetConnection().InsertAsync(mat1);
+
+            organisme1.materials.Add(mat1);
+
+            await GetConnection().UpdateWithChildrenAsync(organisme1);
+
         }
     }
 }
