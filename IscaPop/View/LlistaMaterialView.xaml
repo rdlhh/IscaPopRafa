@@ -7,7 +7,7 @@
     <VerticalStackLayout>
         <Grid>
             <ScrollView>
-                <ListView ItemsSource="{Binding Materials}" ItemTapped="MaterialTapped" HeightRequest="30">
+                <ListView ItemsSource="{Binding materials}" ItemTapped="MaterialTapped" HeightRequest="30">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

@@ -57,9 +57,18 @@ public partial class MaterialView : BasePage
         mat.estat = estat;
         mat.organisme = Organisme;
         Material = mat;
-        vm.insertMaterial(Material);
-        Organisme.materialsCollection.Add(mat);
-        vm.assignDadesOrganisme(Organisme);
+        try
+        {
+            vm.insertMaterial(Material);
+            Organisme.materialsCollection.Add(mat);
+            vm.assignDadesOrganisme(Organisme);
+            DisplayAlert("Material", "El material ha sigut a afegit correctament", "OK");
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("ERROR", "Ha ocorregut un error al crear el material", "OK");
+        }
+
     }
 
     private void ModClick(object sender, EventArgs e)
@@ -74,12 +83,30 @@ public partial class MaterialView : BasePage
         Material.descripcio = descripcio;
         Material.stock = stock;
         Material.estat = estat;
-        vm.modMaterial();
+        try
+        {
+            vm.modMaterial();
+            DisplayAlert("Material", "El material ha sigut modificat correctament", "OK");
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("ERROR", "Ha ocorregut un error al modificar el material", "OK");
+        }
+
 
     }
 
     private void BorrarClick(object sender, EventArgs e)
     {
-        vm.borrarMaterial();
+        try
+        {
+            vm.borrarMaterial();
+            DisplayAlert("Material", "El material ha sigut eliminat correctament", "OK");
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("ERROR", "Ha ocorregut un error al eliminar el material", "OK");
+        }
+
     }
 }

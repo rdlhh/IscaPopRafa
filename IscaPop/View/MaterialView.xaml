@@ -23,8 +23,8 @@
 
         <Label Text="Descripció" FontSize="18" TextColor="#FFFFFF" />
         <Entry x:Name="txtDescripcio" Placeholder="Introdueix la descripció" FontSize="16" BackgroundColor="#000000" HeightRequest="40" />
-        <Label Text="Stock" FontSize="18" TextColor="#333333" />
-        <Entry x:Name="txtStock" Placeholder="Introduce el stock" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" Text="{Binding Material.stock}"/>
+        <Label Text="Stock" FontSize="18" TextColor="#FFFFFF" />
+        <Entry x:Name="txtStock" Placeholder="Introduce el stock" FontSize="16" BackgroundColor="#000000" HeightRequest="40" Text="{Binding Material.stock}"/>
         
 
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand">

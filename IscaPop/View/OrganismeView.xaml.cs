@@ -30,12 +30,31 @@ public partial class OrganismeView : BasePage
         Organisme.nom = nom;
         Organisme.email = email;
         Organisme.password = contraseña;
-        vm.modificarOrganisme();
+        try
+        {
+            vm.modificarOrganisme();
+            DisplayAlert("Detall Organisme", "L'organisme ha sigut modificat correctament", "OK");
+
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("ERROR", "Ha ocurregut un error al modificar l'organisme", "OK");
+        }
+
+
     }
 
     private void EliminarPerfil(object sender, EventArgs e)
     {
-        vm.eliminarOrganisme();
+        try
+        {
+            vm.eliminarOrganisme();
+            DisplayAlert("Organisme eliminat", "L'organisme ha sigut eliminat correctament", "OK");
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("ERROR", "Ha ocurregut un error al eliminar l'organisme", "OK");
+        }
     }
 
     private void CancelarCambios(object sender, EventArgs e)

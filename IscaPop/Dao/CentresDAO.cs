@@ -8,11 +8,11 @@ namespace IscaPop.Dao
     {
         public CentresDAO() { }
 
-        public List<Centre> getAllCentres()
+        /*public List<Centre> getAllCentres()
         {
             List<Centre> listaCentres = BaseDatos.GetConnection().GetAllWithChildrenAsync<Centre>().Result;
             return listaCentres;
-        }
+        }*/
 
         public string buscarCuenta(string codigo)
         {

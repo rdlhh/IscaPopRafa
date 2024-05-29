@@ -6,9 +6,9 @@
              Title="BuscarMaterialView">
     <VerticalStackLayout>
         <Label Text="Nom" FontSize="18" TextColor="#333333" />
-        <Entry x:Name="txtNom" Placeholder="Introdueix el nom" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40"/>
+        <Entry x:Name="txtNom" Placeholder="Introdueix el nom" FontSize="16" BackgroundColor="#000000" HeightRequest="40"/>
         <Label Text="Us" FontSize="18" TextColor="#333333" />
-        <Entry x:Name="txtUso" Placeholder="Introdueix l'us" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40"/>
+        <Entry x:Name="txtUso" Placeholder="Introdueix l'us" FontSize="16" BackgroundColor="#000000" HeightRequest="40"/>
 
         <Picker x:Name="pickerEstat" Title="Selecciona l'estat" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40" ItemDisplayBinding="{Binding Material.estat}">
             <Picker.Items>
@@ -22,7 +22,7 @@
         </Picker>
 
         <Label Text="Descripcio" FontSize="18" TextColor="#333333" />
-        <Entry x:Name="txtDescripcio" Placeholder="Introdueix la descripció" FontSize="16" BackgroundColor="#F2F2F2" HeightRequest="40"/>
+        <Entry x:Name="txtDescripcio" Placeholder="Introdueix la descripció" FontSize="16" BackgroundColor="#000000" HeightRequest="40"/>
 
         <Label Text="{Binding Organisme.Nom}"/>
 
